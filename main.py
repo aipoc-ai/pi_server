@@ -1,5 +1,6 @@
 import socketio
-
+from time import sleep
+from random import randint
 sio = socketio.Client()
 
 @sio.event
@@ -13,6 +14,16 @@ def disconnect():
 
 sio.connect('http://localhost:5000')
 
-for i in range(10):
-	sio.send("data")
-sio.wait()
+
+for i in range(100):
+    data = {
+        "id":1, 
+        "status":True,
+        "temp":str(randint(1,100)),
+        "con_speed":str(randint(1,100)),
+        "cpu":str(randint(1,100)),
+        "camera":True,
+        "ir":True
+    }
+    sio.send(data)
+    sleep(1)
