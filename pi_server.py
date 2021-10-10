@@ -16,7 +16,19 @@ def message(sid, data):
 
 @sio.event
 def disconnect(sid):
+    
+    data = {
+        "id":1, 
+        "status":False,
+        "temp":"_",
+        "con_speed":"_",
+        "cpu":"_",
+        "camera":False,
+        "ir":False
+    }
+    sio.send(data)
     print('disconnect ', sid)
 
 if __name__ == '__main__':
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
+    
