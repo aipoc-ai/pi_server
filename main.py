@@ -12,10 +12,10 @@ def connect():
 def disconnect():
     print('disconnected from server')
 
-sio.connect('http://localhost:5000')
+sio.connect('http://127.0.0.1:5000')
 
 
-for i in range(100):
+for i in range(10):
     data = {
         "id":1, 
         "status":True,
